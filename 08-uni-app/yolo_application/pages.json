@@ -1,0 +1,68 @@
+{
+	"pages": [ //pages数组中第一项表示应用启动页，参考：https://uniapp.dcloud.io/collocation/pages
+		{
+			"path" : "pages/home/home",
+			"style" : 
+			{
+				"navigationBarTitleText" : "智能人流量识别系统"
+			}
+		},
+		{
+			"path" : "pages/watch/watch",
+			"style" : 
+			{
+				"navigationBarTitleText" : "智能人流量识别系统"
+			}
+		},
+		{
+			"path" : "pages/profile/profile",
+			"style" : 
+			{
+				"navigationBarTitleText" : "智能人流量识别系统"
+			}
+		},
+		{
+			"path" : "pages/camera/camera",
+			"style" : 
+			{
+				"navigationBarTitleText" : "照片检测"
+			}
+		},
+		{
+			"path" : "pages/live/live",
+			"style" : 
+			{
+				"navigationBarTitleText" : ""
+			}
+		}
+	],
+	"globalStyle": {
+		"navigationBarTextStyle": "black",
+		"navigationBarTitleText": "uni-app",
+		"navigationBarBackgroundColor": "#F8F8F8",
+		"backgroundColor": "#F8F8F8"
+	},
+	"uniIdRouter": {},
+	"tabBar": {
+		"color": "#7A7E83",
+		"selectedColor": "#d81e06",
+		"borderStyle": "black",
+		"backgroundColor": "#ffffff",
+		"list": [{
+			"pagePath": "pages/home/home",
+			"iconPath": "/static/assets/home.png",
+			"selectedIconPath": "/static/assets/home-off.png",
+			"text": "首页"
+		}, {
+			"pagePath": "pages/watch/watch",
+			"iconPath": "/static/assets/detect.png",
+			"selectedIconPath": "/static/assets/detect-off.png",
+			"text": "监测"
+		}, {
+			"pagePath": "pages/profile/profile",
+			"iconPath": "/static/assets/profile.png",
+			"selectedIconPath": "/static/assets/profile-off.png",
+			"text": "个人"
+		}]
+	}
+}

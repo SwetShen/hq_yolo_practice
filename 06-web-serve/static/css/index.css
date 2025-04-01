@@ -1,0 +1,29 @@
+/* 清空样式 */
+*{
+    margin:0;
+    padding:0;
+}
+
+/* 设置图像的显示区域 */
+.upload-img{
+    width:200px;
+    height:200px;
+    background:#8d8d8d;
+}
+.upload-img img{
+    width:100%;
+    height:100%;
+}
+
+/* 设置按钮的样式 */
+.upload-buttons>*{
+    display:block;
+    width:100px;
+    height:40px;
+}
+
+/* 设置结果显示的字体样式 */
+.upload-result{
+    font-size:30px;
+    font-weight:bold;
+}

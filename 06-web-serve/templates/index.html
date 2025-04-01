@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>数字识别</title>
+    <link rel="stylesheet" type="text/css" href="./static/css/index.css">
+    <script src="./static/js/jquery-3.7.1.min.js"></script>
+</head>
+<body>
+<div class="index-page">
+    <!--    图像显示区域    -->
+    <div class="upload-img">
+        <img id="upload-img" src="" alt="image"/>
+    </div>
+    <!--    按钮区域    -->
+    <form id="upload-file" class="upload-buttons" action="/upload" method="post" enctype="multipart/form-data">
+        <input id="select-file" type="file" name="the_file">
+        <input type="submit">识别该数字</input>
+    </form>
+    <!--    识别显示区域    -->
+    <div class="upload-result" id="upload-result">识别结果：4</div>
+</div>
+</body>
+<script>
+    // 将文件进行base64进行编码
+    function convertToBase64(file, callback) {
+      const reader = new FileReader();
+      reader.onload = function(e) {
+        callback(e.target.result);
+      };
+      reader.readAsDataURL(file);
+    }
+
+    // 直到网页结构加载完成后，再执行
+    $(function(){
+        // 设置选择文件的input元素的内容改变事件
+        $("#select-file").change(function(){
+            // 从当前表单取出file文件
+            f = $(this)[0].files[0]
+            // 将图像的缓存路径进行base64编码
+            convertToBase64(f,function(str){
+                // img设置选择的图像 -> 对于缓存路径中图像只能使用base64编码才可以显示
+                $("#upload-img").attr("src",str)
+            })
+
+        })
+        //设置识别数字按钮的点击事件
+        $("#upload-file").submit(function(ev){
+            // 阻止submit的默认事件发生
+            ev.preventDefault()
+            // 主要使用formData将form表单中文件对象进行打包
+            // 注意一定要加： contentType:false  processData:false
+            var formData = new FormData(this)
+            $.ajax({
+                url:'/upload',
+                type:'POST',
+                data:formData,
+                contentType:false,
+                processData:false,
+                success:function(response){
+                    console.log('文件上传成功')
+                    console.log(response.result)
+                    // 最终显示成功识别到的结果
+                    $("#upload-result").text("识别结果:" + response.result)
+                },
+                error:function(error){
+                    console.error('文件上传失败')
+                    console.error(error)
+                }
+            })
+        })
+    })
+</script>
+</html>
